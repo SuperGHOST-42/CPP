@@ -6,4 +6,5 @@ int main()
 
 	zombie = newZombie("Ariclenes");
 	zombie->announce();
+	//delete zombie;
 }
