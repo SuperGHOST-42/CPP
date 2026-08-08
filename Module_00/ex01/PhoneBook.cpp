@@ -7,7 +7,7 @@ PhoneBook::PhoneBook()
 	this->oldestIndex = 0;
 }
 
-void PhoneBook::addContact()
+int PhoneBook::addContact()
 {
 	Contact newContact;
 	std::string input;
@@ -15,7 +15,8 @@ void PhoneBook::addContact()
 	while (input.empty())
 	{
 		std::cout << "First name: ";
-		std::getline(std::cin, input);
+		if (!std::getline(std::cin, input))
+            return (1);
 	}
 	newContact.setFirstName(input);
 
@@ -23,7 +24,8 @@ void PhoneBook::addContact()
 	while (input.empty())
 	{
 		std::cout << "Last name: ";
-		std::getline(std::cin, input);
+		if (!std::getline(std::cin, input))
+            return (1);
 	}
 	newContact.setLastName(input);
 
@@ -31,7 +33,8 @@ void PhoneBook::addContact()
 	while (input.empty())
 	{
 		std::cout << "Nickname: ";
-		std::getline(std::cin, input);
+		if (!std::getline(std::cin, input))
+            return (1);
 	}
 	newContact.setNickName(input);
 
@@ -39,7 +42,8 @@ void PhoneBook::addContact()
 	while(input.empty())
 	{
 		std::cout << "PhoneNumber: ";
-		std::getline(std::cin, input);
+		if (!std::getline(std::cin, input))
+            return (1);
 	}
 	newContact.setPhoneNumber(input);
 
@@ -47,7 +51,8 @@ void PhoneBook::addContact()
 	while (input.empty())
 	{
 		std::cout << "Darkest Secret: ";
-		std::getline(std::cin, input);
+		if (!std::getline(std::cin, input))
+            return (1);
 	}
 	newContact.setDarkestSecret(input);
 
@@ -56,6 +61,7 @@ void PhoneBook::addContact()
 
 	if (contactCount < 8)
 		contactCount++;
+    return (0);
 }
 
 std::string formatField(std::string str)
@@ -65,7 +71,7 @@ std::string formatField(std::string str)
     return (str);
 }
 
-void PhoneBook::search(void)
+int PhoneBook::search(void)
 {
     int i;
     int index;
@@ -74,7 +80,7 @@ void PhoneBook::search(void)
     if (contactCount == 0)
     {
         std::cout << "PhoneBook is empty." << std::endl;
-        return;
+        return (0);
     }
 
     i = 0;
@@ -94,12 +100,12 @@ void PhoneBook::search(void)
     std::cout << "Index: ";
 
     if (!std::getline(std::cin, input))
-        return;
+        return (1);
 
     if (input.length() != 1 || input[0] < '0' || input[0] > '7')
     {
         std::cout << "Invalid index." << std::endl;
-        return;
+        return (0);
     }
 
     index = input[0] - '0';
@@ -107,7 +113,7 @@ void PhoneBook::search(void)
     if (index >= contactCount)
     {
         std::cout << "Invalid index." << std::endl;
-        return;
+        return (0);
     }
 
     std::cout << "First name: "
@@ -124,4 +130,5 @@ void PhoneBook::search(void)
 
     std::cout << "Darkest secret: "
               << contacts[index].getDarkestSecret() << std::endl;
+    return (0);
 }

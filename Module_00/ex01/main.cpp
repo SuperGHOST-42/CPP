@@ -14,9 +14,15 @@ int main(void)
             break;
 
         if (command == "ADD")
-            phoneBook.addContact();
+        {
+            if (phoneBook.addContact() == 1)
+                return (1);
+        }
         else if (command == "SEARCH")
-            phoneBook.search();
+        {
+            if (phoneBook.search() == 1)
+                return (1);
+        }
         else if (command == "EXIT")
             break;
     }

@@ -13,8 +13,8 @@ class PhoneBook
 	
 	public:
 		PhoneBook();
-		void addContact();
-		void search();		
+		int addContact();
+		int search();		
 };
 
 #endif
