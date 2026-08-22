@@ -6,11 +6,6 @@ PhoneBook::PhoneBook()
 	this->oldestIndex = 0;
 }
 
-PhoneBook::~PhoneBook()
-{
-    std::cout << "Fuii" << std::endl;
-}
-
 void PhoneBook::addContact()
 {
 	Contact newContact;

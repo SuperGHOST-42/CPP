@@ -10,6 +10,7 @@ void    to_upper(char *str)
         std::cout << static_cast<char>(std::toupper(str[i]));
         i++;
     }
+    std::cout << " ";
 }
 
 int main(int argc, char **argv)
