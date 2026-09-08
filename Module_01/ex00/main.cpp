@@ -6,5 +6,10 @@ int main()
 
 	zombie = newZombie("Ariclenes");
 	zombie->announce();
-	//delete zombie;
+	
+	delete zombie;
+	
+	randomChump("GHOST");
+	
+	return (0);
 }
