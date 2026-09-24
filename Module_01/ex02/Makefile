@@ -1,4 +1,4 @@
-NAME = zombieHorde
+NAME = stringREF
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
