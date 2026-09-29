@@ -1,30 +1,28 @@
 #include "HumanA.hpp"
 #include "HumanB.hpp"
+#include "Weapon.hpp"
 
 int main()
 {
-	{
-		Weapon weapon("SMG");
-		HumanA a("GHOST", weapon);
-
-		a.attack();
-		
-		weapon.setType("SHOTGUN");
-			
-		a.attack();
-	}
 
 	{
-		Weapon weapon("Sniper");
-		HumanB b("SuperGHOST");
-
-		b.setWeapon(weapon);
+		Weapon club = Weapon("crude spiked club");
+		HumanA bob("Bob", club);
 		
-		b.attack();
-		
-		weapon.setType("AR");
-		
-		b.attack();
+		bob.attack();
+		club.setType("some other type of club");
+		bob.attack();
 	}
-	return (0);
+	
+
+	{
+		Weapon club = Weapon("crude spiked club");
+		HumanB jim("Jim");
+		
+		jim.setWeapon(club);
+		jim.attack();
+		club.setType("some other type of club");
+		jim.attack();
+	}
+	return 0;
 }
