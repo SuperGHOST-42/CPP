@@ -39,3 +39,7 @@ int main(int argc, char **argv)
 
     return (0);
 }
+
+// std::string content = "ola mundo, ola amigo";
+// std::string s1 = "ola";
+// std::string s2 = "bom dia";
