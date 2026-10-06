@@ -13,7 +13,7 @@ class Fixed
 		~Fixed(); 							 //destructor
 		
 		int getRawBits(void) const;
-		void setRawBits(const int value);
+		void setRawBits(int const raw);
 };
 
 #endif
