@@ -8,8 +8,8 @@ class Fixed
 		static const int _fractionalBits = 8;
 	public:
 		Fixed(); 				  			//deafault constructor
-		Fixed(const Fixed &copy); 			//copy constructor
-		Fixed &operator=(const Fixed &copy); //copy assignment operator assignemnt
+		Fixed(const Fixed &other);   		//copy constructor
+		Fixed &operator=(const Fixed &other); //copy assignment operator
 		~Fixed(); 							 //destructor
 		
 		int getRawBits(void) const;
