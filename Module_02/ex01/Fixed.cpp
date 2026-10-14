@@ -1,56 +1,69 @@
 #include "Fixed.hpp"
+#include <iostream>
+#include <cmath>
 
-Fixed::Fixed(void) : value(0)
+Fixed::Fixed() :_rawBits(0) 
 {
 	std::cout << "Default constructor called" << std::endl;
 }
+
 Fixed::Fixed(const int value)
 {
-	this->value = value << fractionalBits;
+	std::cout << "Int constructor called" << std::endl;
+	this->_rawBits = value * (1 << _fractionalBits);
 }
+
 Fixed::Fixed(const float value)
 {
-	this->value = roundf(value * (1 << fractionalBits));
+	std::cout << "Float constructor called" << std::endl;
+	this->_rawBits = static_cast<int> (roundf(value * (1 << _fractionalBits)));
 }
-Fixed::~Fixed(void)
+
+Fixed::Fixed(const Fixed &other)
+{
+	std::cout << "Copy Constructor called" << std::endl;
+	*this = other;
+}
+
+Fixed &Fixed::operator=(const Fixed &other)
+{
+	std::cout << "Copy assignment operator called" << std::endl;
+	
+	if (this != &other)
+		_rawBits = other._rawBits;
+	
+	return (*this);
+}
+
+Fixed::~Fixed()
 {
 	std::cout << "Destructor called" << std::endl;
 }
-Fixed::Fixed(const Fixed &copy)
-{
-	std::cout << "Copy constructor called" << std::endl;
-	*this = copy;
-}
-
-Fixed &Fixed::operator=(const Fixed &copy)
-{
-	std::cout << "Copy assignment operator called" << std::endl;
-	value = copy.value;
-	return (*this);
-}
-std::ostream &operator<<(std::ostream &out, const Fixed &fixed)
-{
-    out << fixed.toFloat();
-    return (out);
-} 
 
 int Fixed::getRawBits(void) const
 {
 	std::cout << "getRawBits member function called" << std::endl;
-	return (this->value);
+	
+	return (this->_rawBits);
 }
 
 void Fixed::setRawBits(int const raw)
 {
-	this->value = raw;
-}
-
-int Fixed::toInt(void) const
-{
-    return (this->value >> fractionalBits);
+	_rawBits = raw;
 }
 
 float Fixed::toFloat(void) const
 {
-	return (static_cast<float>(this->value) / (1 << fractionalBits));
+	return static_cast<float>(_rawBits) / (1 << _fractionalBits);
+}
+
+int Fixed::toInt(void) const
+{
+	return _rawBits / (1 << _fractionalBits);
+}
+
+std::ostream &operator<<(std::ostream &out, const Fixed &value)
+{
+	out << value.toFloat();
+	return (out);
 }
