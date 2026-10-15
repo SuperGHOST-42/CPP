@@ -67,3 +67,127 @@ std::ostream &operator<<(std::ostream &out, const Fixed &value)
 	out << value.toFloat();
 	return (out);
 }
+
+bool Fixed::operator>(const Fixed &other) const
+{
+	if (_rawBits > other._rawBits)
+		return true;
+	return false;
+}
+
+bool Fixed::operator<(const Fixed &other) const
+{
+	if (_rawBits < other._rawBits)
+		return true;
+	return false;
+}
+
+bool Fixed::operator>=(const Fixed &other) const
+{
+	if (_rawBits >= other._rawBits)
+		return true;
+	return false;
+}
+
+bool Fixed::operator<=(const Fixed &other) const
+{
+	if (_rawBits <= other._rawBits)
+		return true;
+	return false;
+}
+
+bool Fixed::operator==(const Fixed &other) const
+{
+	if (_rawBits == other._rawBits)
+		return true;
+	return false;
+}
+
+bool Fixed::operator!=(const Fixed &other) const
+{
+	if (_rawBits != other._rawBits)
+		return true;
+	return false;
+}
+
+Fixed Fixed::operator+(const Fixed &other) const
+{
+    Fixed result;
+
+    double rawA = static_cast<double>(_rawBits);
+    double rawB = static_cast<double>(other._rawBits);
+    double sum = rawA + rawB;
+
+    result.setRawBits(static_cast<int>(sum));
+    return result;
+}
+
+Fixed Fixed::operator-(const Fixed &other) const
+{
+    Fixed result;
+
+    double rawA = static_cast<double>(_rawBits);
+    double rawB = static_cast<double>(other._rawBits);
+    double difference = rawA - rawB;
+
+    result.setRawBits(static_cast<int>(difference));
+    return result;
+}
+
+Fixed Fixed::operator*(const Fixed &other) const
+{
+    Fixed result;
+
+    double rawA = static_cast<double>(_rawBits);
+    double rawB = static_cast<double>(other._rawBits);
+    double scale = 1 << _fractionalBits;
+
+    double product = rawA * rawB;
+    double scaledResult = product / scale;
+
+    result.setRawBits(static_cast<int>(scaledResult));
+    return result;
+}
+
+Fixed Fixed::operator/(const Fixed &other) const
+{
+    Fixed result;
+
+    double rawA = static_cast<double>(_rawBits);
+    double rawB = static_cast<double>(other._rawBits);
+    double scale = 1 << _fractionalBits;
+
+    double numerator = rawA * scale;
+    double quotient = numerator / rawB;
+
+    result.setRawBits(static_cast<int>(quotient));
+    return result;
+}
+
+Fixed &Fixed::operator++()
+{
+	++_rawBits;
+	return *this;
+}
+
+Fixed Fixed::operator++(int)
+{
+	Fixed temp(*this);
+	
+	_rawBits++;
+	return (temp);
+}
+
+Fixed &Fixed::operator--()
+{
+	--_rawBits;
+	return *this;
+}
+
+Fixed Fixed::operator--(int)
+{
+	Fixed temp(*this);
+
+	--_rawBits;
+	return temp;
+}
