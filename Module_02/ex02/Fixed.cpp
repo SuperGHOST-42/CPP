@@ -138,14 +138,9 @@ Fixed Fixed::operator*(const Fixed &other) const
 {
     Fixed result;
 
-    double rawA = static_cast<double>(_rawBits);
-    double rawB = static_cast<double>(other._rawBits);
-    double scale = 1 << _fractionalBits;
+    long product = static_cast<long>(_rawBits) * other._rawBits;
+    result._rawBits = product / (1 << _fractionalBits);
 
-    double product = rawA * rawB;
-    double scaledResult = product / scale;
-
-    result.setRawBits(static_cast<int>(scaledResult));
     return result;
 }
 
@@ -153,14 +148,11 @@ Fixed Fixed::operator/(const Fixed &other) const
 {
     Fixed result;
 
-    double rawA = static_cast<double>(_rawBits);
-    double rawB = static_cast<double>(other._rawBits);
-    double scale = 1 << _fractionalBits;
+    long numerator = static_cast<long>(_rawBits)
+                     * (1 << _fractionalBits);
 
-    double numerator = rawA * scale;
-    double quotient = numerator / rawB;
+    result._rawBits = numerator / other._rawBits;
 
-    result.setRawBits(static_cast<int>(quotient));
     return result;
 }
 
