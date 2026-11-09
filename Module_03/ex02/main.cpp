@@ -1,21 +1,24 @@
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int main()
 {
-	ScavTrap a("Alpha");
+	FragTrap a("Alpha");
+
+	a.print();
 
 	a.attack("Enemy");
 	a.takeDamage(30);
 	a.beRepaired(10);
-	a.guardGate();
-
-	ScavTrap b(a);
-	ScavTrap c;
-	c = a;
+	a.highFivesGuys();
+	a.print();
 
 	a.takeDamage(100);
-	a.attack("Enemy"); // Deve falhar: sem vida
-	a.beRepaired(10);  // Deve falhar: sem vida
+	a.print();
+
+	a.attack("Enemy");
+	a.beRepaired(10);
+
+	a.print();
 
 	return (0);
 }
