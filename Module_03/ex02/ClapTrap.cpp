@@ -81,22 +81,24 @@ void	ClapTrap::beRepaired(unsigned int amount)
 		_energyPoint--;
 		_hitPoints += static_cast<int>(amount);
 
-		std::cout << "ClapTrap" << _name
-		<< "repairs" << amount
-		<< "hitPoints" 
+		std::cout << "ClapTrap " << _name
+		<< " repairs " << amount
+		<< " hitPoints" 
 		<< std::endl;
 	}
 	else
 	{
-		std::cout << "ClapTrap" << _name 
-		<< "can't repair itself" 
+		std::cout << "ClapTrap " << _name 
+		<< " can't repair itself" 
 		<< std::endl;
 	}
 }
 
 void ClapTrap::print(void)
 {
+	std::cout << "================" << std::endl;
 	std::cout << "hitPoints: " << this->_hitPoints << std::endl;
 	std::cout << "energyPoints: " << this->_energyPoint << std::endl;
 	std::cout << "attackDamage " << this->_attackDamage << std::endl;
+	std::cout << "================" << std::endl;
 }

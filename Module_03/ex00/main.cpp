@@ -2,14 +2,16 @@
 
 int main(void)
 {
-	ClapTrap robot("Ariclenes");
+	ClapTrap robot("GHOST");
 
 	robot.print();
-
 	robot.attack("Snowden");
-	robot.takeDamage(3);
-	robot.beRepaired(2);
+	robot.print();
 
+	robot.takeDamage(3);
+	robot.print();
+
+	robot.beRepaired(2);
 	robot.print();
 
 }

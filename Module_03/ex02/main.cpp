@@ -2,13 +2,18 @@
 
 int main()
 {
-	FragTrap a("Alpha");
-
+	FragTrap a("GHOST");
 	a.print();
 
-	a.attack("Enemy");
+	a.attack("Snowden");
+	a.print();
+
 	a.takeDamage(30);
+	a.print();
+
 	a.beRepaired(10);
+	a.print();
+
 	a.highFivesGuys();
 	a.print();
 
@@ -16,8 +21,9 @@ int main()
 	a.print();
 
 	a.attack("Enemy");
-	a.beRepaired(10);
+	a.print();
 
+	a.beRepaired(10);
 	a.print();
 
 	return (0);

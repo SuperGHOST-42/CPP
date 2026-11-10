@@ -94,7 +94,9 @@ void	ClapTrap::beRepaired(unsigned int amount)
 
 void ClapTrap::print(void)
 {
+	std::cout << "================" << std::endl;
 	std::cout << "hitPoints: " << this->_hitPoints << std::endl;
 	std::cout << "energyPoints: " << this->_energyPoint << std::endl;
 	std::cout << "attackDamage " << this->_attackDamage << std::endl;
+	std::cout << "================" << std::endl;
 }
