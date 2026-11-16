@@ -3,20 +3,20 @@
 Animal::Animal()
 	:type("Default")
 {
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << "Animal default constructor called" << std::endl;
 }
 
 Animal::Animal(std::string name)
 	:type(name)
 {
 	std::cout << "Animal " << this->type
-	<< "created!" 
+	<< " created!" 
 	<< std::endl;
 }
 
 Animal::Animal(const Animal &other)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "Animal copy constructor called" << std::endl;
 	*this = other;
 }
 
@@ -29,10 +29,15 @@ Animal &Animal::operator=(const Animal &other)
 
 Animal::~Animal()
 {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "Animal destructor called" << std::endl;
 }
 
-void Animal::makeSound()
+std::string	Animal::getType(void) const
 {
-	
+	return (this->type);
+}
+
+void Animal::makeSound() const
+{
+	std::cout << "Animal sound" << std::endl;
 }
